@@ -253,8 +253,11 @@ int main()
 		{
 			std::pair<int, int> best_pos = getBestRequiredPosition(game);
 			std::cout << "Enter value of (" << best_pos.first << ", " << best_pos.second << "): " << std::flush;
-			char val;
-			game(best_pos.first, best_pos.second) = { static_cast<char>(std::cin.get()) };
+			again2:
+			char val = std::cin.get();
+			if (!std::isdigit(val))
+				goto again2;
+			game(best_pos.first, best_pos.second) = { val };
 			std::cin.ignore(1);
 		}
 		std::system("cls");
